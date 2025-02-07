@@ -27,6 +27,19 @@ class UserRepository {
 			if (conn) conn.release();
 		}
 	}
+
+	async getUserById(id) {
+		let conn;
+		try {
+			conn = await this.pool.getConnection();
+			const rows = await conn.query("SELECT * FROM Users WHERE id = ?", [id]);
+			return rows[0] || null;
+		} catch (err) {
+			throw new Error(
+				"Erreur lors de la récupération de l'utilisateur: " + err.message
+			);
+		}
+	}
 }
 
 export default UserRepository;
