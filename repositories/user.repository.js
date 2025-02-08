@@ -14,6 +14,24 @@ class UserRepository {
 		});
 	}
 
+	async createUser({ id, pfp, name, bio, email, pwd }) {
+		let conn;
+		try {
+			conn = await this.pool.getConnection();
+			await conn.query(
+				"INSERT INTO Users (id, pfp, name, bio, email, pwd) VALUES (?,?,?,?,?,?)",
+				[id, pfp, name, bio, email, pwd]
+			);
+			return { id, pfp, name, bio, email, pwd };
+		} catch (err) {
+			throw new Error(
+				"Erreur lors de la création de l'utilisateur" + err.message
+			);
+		} finally {
+			if (conn) conn.release();
+		}
+	}
+
 	async getUsers() {
 		let conn;
 		try {
