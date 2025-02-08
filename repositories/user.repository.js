@@ -81,6 +81,22 @@ class UserRepository {
 			if (conn) conn.release();
 		}
 	}
+
+	async deleteUser(id) {
+		let conn;
+		try {
+			conn = await this.pool.getConnection();
+			const result = await conn.query("DELETE FROM Users WHERE id = ?", [id]);
+			if (result.affectedRows === 0) throw new Error("Utilisateur non trouvé");
+			return { message: "Utilisateur supprimé avec succès" };
+		} catch (err) {
+			throw new Error(
+				"Erreur lors de la récupération de l'utilisateur: " + err.message
+			);
+		} finally {
+			if (conn) conn.release();
+		}
+	}
 }
 
 export default UserRepository;

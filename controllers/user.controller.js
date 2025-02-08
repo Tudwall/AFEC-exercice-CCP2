@@ -58,6 +58,16 @@ class UserController {
 			res.status(400).json({ err: err.message });
 		}
 	}
+
+	async deleteUser(req, res) {
+		const { id } = req.params;
+		try {
+			const result = await this.userService.deleteUser(id);
+			res.status(200).json(result);
+		} catch (err) {
+			res.status(400).json({ err: err.message });
+		}
+	}
 }
 
 export default UserController;

@@ -53,6 +53,18 @@ class UserService {
 			throw new Error(err.message);
 		}
 	}
+
+	async deleteUser(id) {
+		try {
+			const deletedUser = await this.userRepository.deleteUser(id);
+			if (!deletedUser) {
+				throw new Error("Utilisateur introuvable");
+			}
+			return { message: "Utilisateur supprimé" };
+		} catch (err) {
+			throw new Error(err.message);
+		}
+	}
 }
 
 export default UserService;
