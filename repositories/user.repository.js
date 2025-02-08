@@ -18,14 +18,14 @@ class UserRepository {
 		let conn;
 		try {
 			conn = await this.pool.getConnection();
-			const result = await conn.query(
+			const newUser = await conn.query(
 				"INSERT INTO Users (id, pfp, name, bio, email, pwd) VALUES (?,?,?,?,?,?) RETURNING *",
 				[id, pfp, name, bio, email, pwd]
 			);
 			return result;
 		} catch (err) {
 			throw new Error(
-				"Erreur lors de la création de l'utilisateur" + err.message
+				"Erreur lors de la création de l'utilisateur: " + err.message
 			);
 		} finally {
 			if (conn) conn.release();
