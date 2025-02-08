@@ -35,6 +35,24 @@ class UserService {
 			throw new Error(err.message);
 		}
 	}
+
+	async updateUser(id, { pfp, name, bio, email, pwd }) {
+		try {
+			const updatedUser = await this.userRepository.updateUser(id, {
+				pfp,
+				name,
+				bio,
+				email,
+				pwd,
+			});
+			if (!updatedUser) {
+				throw new Error("Utilisateur introuvable");
+			}
+			return updatedUser;
+		} catch (err) {
+			throw new Error(err.message);
+		}
+	}
 }
 
 export default UserService;
