@@ -22,7 +22,7 @@ class UserRepository {
 				"INSERT INTO Users (id, pfp, name, bio, email, pwd) VALUES (?,?,?,?,?,?) RETURNING *",
 				[id, pfp, name, bio, email, pwd]
 			);
-			return result;
+			return newUser;
 		} catch (err) {
 			throw new Error(
 				"Erreur lors de la création de l'utilisateur: " + err.message
