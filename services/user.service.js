@@ -5,6 +5,21 @@ class UserService {
 		this.userRepository = new UserRepository();
 	}
 
+	async createUser({ id, pfp, name, bio, email, pwd }) {
+		try {
+			return await this.userRepository.createUser({
+				id,
+				pfp,
+				name,
+				bio,
+				email,
+				pwd,
+			});
+		} catch (err) {
+			throw new Error(err.message);
+		}
+	}
+
 	async getUsers() {
 		try {
 			return await this.userRepository.getUsers();
