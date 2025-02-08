@@ -1,0 +1,27 @@
+{
+	"name": "afec-exercice-ccp2",
+	"version": "1.0.0",
+	"description": "",
+	"main": "app.js",
+	"type": "module",
+	"scripts": {
+		"start": "nodemon app.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Tudwall/AFEC-exercice-CCP2.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Tudwall/AFEC-exercice-CCP2/issues"
+	},
+	"homepage": "https://github.com/Tudwall/AFEC-exercice-CCP2#readme",
+	"dependencies": {
+		"dotenv": "^16.4.7",
+		"express": "^4.21.2",
+		"mariadb": "^3.4.0"
+	}
+}

@@ -1,0 +1,6 @@
+DB_HOST = localhost
+DB_USER = user
+DB_PASSWORD = pwd
+DB_PORT= portDatabase
+DATABASE = nomDatabase
+PORT = portExpress
